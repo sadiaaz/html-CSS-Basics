@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sadiaaz Repo Welcome</title>
+<style>
+  /* Reset & body */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(120deg, #0b0b0b, #1a1a1a);
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  h1 { display:none; } /* optional hide heading */
+
+  /* Parallax Container */
+  .parallax-scene {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 1000px;
+  }
+
+  /* Center Card */
+  .intro-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(17,17,17,0.85);
+    padding: 50px 60px;
+    border-radius: 24px;
+    text-align: center;
+    z-index: 10;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease;
+  }
+
+  .intro-card:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  .intro-card h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+  }
+
+  .edge { 
+    color: #00e5ff; 
+    font-weight: bold;
+    text-shadow: 0 0 10px #00e5ff;
+  }
+
+  .intro-card p {
+    margin-bottom: 25px;
+    opacity: 0.9;
+    font-size: 1.1rem;
+  }
+
+  .btn-next {
+    padding: 14px 40px;
+    border-radius: 30px;
+    border: 2px solid #00e5ff;
+    background: transparent;
+    color: #00e5ff;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .btn-next:hover {
+    background: #00e5ff;
+    color: #111;
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0,229,255,0.6);
+  }
+
+  /* Floating Images */
+  .parallax-item {
+    position: absolute;
+    width: 220px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.2s ease;
+  }
+
+  .parallax-item:nth-child(2) { top: 10%; left: 5%; }
+  .parallax-item:nth-child(3) { top: 70%; left: 25%; }
+  .parallax-item:nth-child(4) { top: 20%; right: 0%; }
+  .parallax-item:nth-child(5) { bottom: 10%; right: 10%; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .intro-card {
+      padding: 30px 40px;
+    }
+    .intro-card h2 { font-size: 1.8rem; }
+    .parallax-item { width: 140px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="parallax-scene">
+  <!-- Center Content -->
+  <div class="intro-card">
+    <h2><span class="edge">Welcome</span> to Sadiaaz Repo</h2>
+    <p>Let’s celebrate what made 2026 special</p>
+    <button class="btn-next">Next</button>
+  </div>
+
+  <!-- Floating Images -->
+  <img src="https://edgestatic.azureedge.net/shared/cms/lrs1c69a1j/section-images/584783989ebc4a5993ee608ab9a28a49-png-w600.avif" class="parallax-item" data-speed="4">
+  <img src="https://edgestatic.azureedge.net/shared/cms/lrs1c69a1j/section-images/c5eb7f9a362e4f0d85d4ec3485e0368a-png-w600.avif" class="parallax-item" data-speed="7">
+  <img src="https://edgestatic.azureedge.net/shared/cms/lrs1c69a1j/section-images/13d6899c05cc4fe5ba18802455859711-png-w600.avif" class="parallax-item" data-speed="5">
+  <img src="https://edgestatic.azureedge.net/shared/cms/lrs1c69a1j/section-images/b2a76618905e4e51b4fded03c7cbb1c7-png-w600.avif" class="parallax-item" data-speed="9">
+</section>
+
+<script>
+document.addEventListener("mousemove", (e) => {
+  const items = document.querySelectorAll(".parallax-item");
+  const x = (window.innerWidth / 2 - e.clientX) / 40;
+  const y = (window.innerHeight / 2 - e.clientY) / 40;
+
+  items.forEach(item => {
+    const speed = item.dataset.speed;
+    item.style.transform = `translate(${x * speed}px, ${y * speed}px) rotate(${x*speed/10}deg)`;
+  });
+});
+</script>
+
+</body>
+</html>
